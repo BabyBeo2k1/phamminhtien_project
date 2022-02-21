@@ -37,7 +37,6 @@ public  class BingoNumber {
 				this.letter='O';
 				break;
 			}
-		
 	}
 	public boolean isCalled() {
 		return called;
