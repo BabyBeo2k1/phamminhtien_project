@@ -83,6 +83,7 @@ public  class BingoClass {
 		}
 		if(this.checkMainDiagonal())check=true;
 		if(this.checkOtherDiagonal())check=true;
+		if(check)this.winner=true;
 		return check;
 	}
 

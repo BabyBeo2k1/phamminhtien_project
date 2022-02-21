@@ -11,11 +11,14 @@ public class BingoPlayer {
 		String class_name =order.next();
 		String file_card=order.next();
 		String file_play=order.next();
+		BingoNumber [][]a=new BingoNumber[5][5];
 		
-		try {
+		try{
 			File player_card= new File(file_card);
+		
 			Scanner scan_file=new Scanner(player_card);
-			BingoNumber [][]a=new BingoNumber[5][5];
+			
+		
 			for(int i=0;i<5;i++) {
 				for(int j=0;j<5;j++) {
 					int data=scan_file.nextInt();
@@ -23,22 +26,40 @@ public class BingoPlayer {
 					a[i][j]=tmp;
 				}
 			}
-		}catch(FileNotFoundException e){
-			System.out.println("An error occur: Please enter a valid card file\n");
+		}catch(FileNotFoundException e) {
+			System.out.println ("An error occur at card file:");
+			e.printStackTrace();
 		}
-		
+		BingoClass test_card=new BingoClass();
+		test_card.setCard(a);
+		BingoNumber[]x;
 		try {
 			File call= new File(file_play);
 			Scanner scan_call=new Scanner(call);
 			int []call_num;
+			int i=0;
 			while(scan_call.hasNextInt()) {
-				int tmp = scan_call.nextInt();
-				
+				int tmp =scan_call.nextInt();
+				test_card.checkNumber(tmp);
+				test_card.checkWinner();
+				if(test_card.isWinner())test_card.printCard();
+				break;
 			}
 		}catch(FileNotFoundException e){
-			System.out.println("An error occur: Please enter a valid call file\n");
+			System.out.println("An error occur at calling file: ");
+			e.printStackTrace();
+			
 		}
 		
+		try {
+		      File myObj = new File("bingo_card.txt");
+		      Scanner myReader = new Scanner(myObj);
+		      System.out.println("success");
+		      myReader.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("An error occurred.");
+			e.printStackTrace();
+	    }
 	}
 
 }
