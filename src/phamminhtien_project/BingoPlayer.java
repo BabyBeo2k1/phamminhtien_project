@@ -58,7 +58,7 @@ public class BingoPlayer {
 					cards.get(j).checkNumber(player_call_order.get(i).getNumber());
 					cards.get(j).checkWinner();
 					if(cards.get(j).isWinner()) {
-						System.out.printf("the card number %d has won at call number %d\n",j,i);
+						System.out.printf("the card number %d has won at call number %d\n",j+1,i+1);
 						cards.get(j).printCard();
 					}
 				}
